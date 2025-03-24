@@ -28,8 +28,18 @@
       "dest": "/godkr-web/out/notifications.html"
     },
     {
+      "src": "/styles.css",
+      "dest": "/godkr-web/out/styles.css"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/godkr-web/out/images/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/godkr-web/out/$1"
     }
-  ]
+  ],
+  "buildCommand": "echo 'No build step required'",
+  "installCommand": "echo 'No install step required'"
 } 
