@@ -8,6 +8,26 @@
   ],
   "routes": [
     {
+      "src": "/",
+      "dest": "/godkr-web/out/index.html"
+    },
+    {
+      "src": "/discover",
+      "dest": "/godkr-web/out/discover.html"
+    },
+    {
+      "src": "/profile",
+      "dest": "/godkr-web/out/profile.html"
+    },
+    {
+      "src": "/community",
+      "dest": "/godkr-web/out/community.html"
+    },
+    {
+      "src": "/notifications",
+      "dest": "/godkr-web/out/notifications.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/godkr-web/out/$1"
     }
