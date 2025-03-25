@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GoDkr - Guide de Dakar
 
-## Getting Started
+GoDkr est une application web et mobile qui aide les nouveaux arrivants à Dakar à découvrir la ville, trouver des lieux d'intérêt, rejoindre des communautés et rester informés des actualités locales.
 
-First, run the development server:
+## Technologies utilisées
 
+- **Frontend Web**: Next.js 14 avec TypeScript et Tailwind CSS
+- **Backend**: Node.js avec Express et Prisma
+- **Base de données**: PostgreSQL
+- **Authentification**: NextAuth.js
+- **Cartographie**: Mapbox
+- **Gestion d'images**: Cloudinary
+
+## Prérequis
+
+- Node.js 18.x ou supérieur
+- PostgreSQL
+- npm ou yarn
+
+## Installation
+
+1. Clonez le dépôt :
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/votre-username/godkr.git
+cd godkr/godkr-web
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Installez les dépendances :
+```bash
+npm install
+# ou
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configurez les variables d'environnement :
+```bash
+cp .env.example .env
+```
+Modifiez le fichier `.env` avec vos propres valeurs :
+- `DATABASE_URL` : URL de votre base de données PostgreSQL
+- `NEXTAUTH_SECRET` : Une chaîne aléatoire pour la sécurité de NextAuth
+- `NEXTAUTH_URL` : URL de votre application (http://localhost:3000 en développement)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Initialisez la base de données :
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-## Learn More
+5. Lancez le serveur de développement :
+```bash
+npm run dev
+# ou
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+L'application sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure du projet
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+godkr-web/
+├── src/
+│   ├── app/              # Pages et routes de l'application
+│   ├── components/       # Composants React réutilisables
+│   ├── lib/             # Utilitaires et configurations
+│   └── styles/          # Styles globaux
+├── prisma/              # Schéma et migrations de la base de données
+├── public/              # Fichiers statiques
+└── package.json         # Dépendances et scripts
+```
 
-## Deploy on Vercel
+## Fonctionnalités
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 🔐 Authentification et gestion des profils utilisateurs
+- 🗺️ Carte interactive de Dakar avec lieux d'intérêt
+- 👥 Création et gestion de communautés
+- 📰 Actualités et événements locaux
+- 📱 Interface responsive pour mobile et desktop
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à :
+
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## Contact
+
+Votre Nom - [@votre_twitter](https://twitter.com/votre_twitter)
+
+Lien du projet : [https://github.com/votre-username/godkr](https://github.com/votre-username/godkr)

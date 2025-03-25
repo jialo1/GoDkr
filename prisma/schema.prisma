@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String
+  bio           String?
+  location      String?
+  resetToken    String?
+  resetTokenExpiry DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  places        Place[]
+  communities   Community[]
+  news          News[]
+  comments      Comment[]
+}
+
+model Place {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  address     String
+  latitude    Float
+  longitude   Float
+  category    String
+  imageUrl    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String
+  comments    Comment[]
+}
+
+model Community {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  imageUrl    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String
+}
+
+model News {
+  id          String    @id @default(cuid())
+  title       String
+  content     String
+  category    String
+  imageUrl    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  place     Place    @relation(fields: [placeId], references: [id])
+  placeId   String
+} 
